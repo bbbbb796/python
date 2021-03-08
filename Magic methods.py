@@ -139,3 +139,43 @@
 #figures = [rect1, rect2, sq1, cr1]
 #for i in figures:
 #    print(i ,i.get_area())
+
+
+#Магические методы __getitem__ , __setitem__ и __delitem__. Обращение по индексу к экземпляру ####################################################
+
+#class Vector:
+#    def __init__(self, *args):
+#        self.values = list(args)
+    
+#    def __repr__(self):
+#        return str(self.values)
+    
+#    def __getitem__(self, index):
+#        if 0<len(self.values):
+#            return self.values[index] #<-- получаем
+#        else:
+#            raise IndexError("Индекс за границей списка")
+    
+#    def __setitem__(self, key, value):
+#        if 0<len(self.values): #<-- присваиваем
+#            self.values[key] = value #key = value == добавление нового значения
+#        else:
+#            raise IndexError("Индекс за границей списка")
+    
+#    def __delitem__(self, key):
+#        if 0<len(self.values): #<-- удаляем
+#            del self.values[key]
+#        else:
+#            raise IndexError("Индекс за границей списка")
+
+
+#v1 = Vector(1,2,3,4,5,6,7,8,9,10)
+#v2 = Vector(5,6,5,6,3,1,7,8)
+#v3 = Vector(6,3,8,3,7,1)
+#print(v1[2])
+
+#v2[2] = 100
+#print(v2)
+
+#del(v3[1])
+#print(v3[1])
