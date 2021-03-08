@@ -92,3 +92,50 @@
 
 #p = Point(1,2)
 #print(bool(p))
+
+
+#Полиморфизм в Python #########################################################
+
+#Полиморфизм - это способность выполнять действие над объектом независимо от его типа
+
+#class Rectangle:
+#    def __init__(self, x, y):
+#        self.x = x
+#        self.y = y
+    
+#    def __str__(self):
+#        return f"Rectangle {self.x}x{self.y}"
+#
+#    def get_area(self):
+#        return self.x * self.y
+
+#class Square:
+#    def __init__(self, x):
+#        self.x = x
+    
+#    def __str__(self):
+#        return f"Square {self.x}x{self.x}"
+
+#    def get_area(self):
+#        return self.x ** 2
+
+#class Circle:
+#    def __init__(self, r):
+#        self.r = r
+    
+#    def __str__(self):
+#        return f"Circle radius = {self.r}"
+
+#    def get_area(self):
+#        return 3,14 * self.r ** 2
+
+#cr1 = Circle(5)
+
+#rect1 = Rectangle(1,2)
+#rect2 = Rectangle(3,4)
+
+#sq1 = Square(4)
+
+#figures = [rect1, rect2, sq1, cr1]
+#for i in figures:
+#    print(i ,i.get_area())
