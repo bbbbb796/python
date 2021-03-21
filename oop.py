@@ -170,8 +170,30 @@
 #print(x)
 
 
+#property ######################################################################
 
-#ПРОСТОЕ НАСЛЕДОВАНИЕ КЛАССОВ ###############################################################
+#class BankAccount:
+#
+#    def __init__(self, name, balance):
+#        self.name = name
+#        self.__balance = balance
+    
+#    @property
+#    def my_balance(self):
+#        print('get balance')
+#        return self.__balance
+
+#    @my_balance.setter
+#    def my_balance(self, value):
+#        print('set balance')
+#        self.__balance = value
+
+#p = BankAccount('seva', 300)
+#print(p.my_balance)
+
+
+
+#ПРОСТОЕ НАСЛЕДОВАНИЕ КЛАССОВ ########################################
 
 
 #class Person: #parent
@@ -197,7 +219,7 @@
 #print(issubclass(Person, Doctor))
 
 
-#Пространство имен класса Class Body scope in Python #####################################
+#Пространство имен класса Class Body scope in Python ###########################
 
 #class DepartmentIT:
     
@@ -221,7 +243,7 @@
 
 #    @staticmethod
 #    def info_static():
-#        print(DepartmentIT.python_dev, DepartmentIT.go_dev, DepartmentIT.react_dev)
+#        print(DepartmentIT.python_dev, DepartmentIT.go_dev DepartmentIT.react_dev)
 
 #    def make_bakend(self):
 #        print('Pyhon and GO')
@@ -236,3 +258,170 @@
 #print(it.python_dev)
 #it.hiring_pyt_dev()
 #print(it.python_dev)
+
+
+
+#Наследование. Переопределение методов в Python ###############################
+
+#class Person:
+
+#    def __init__(self, name):
+#        self.name = name
+    
+#    def breath(self):
+#        print('человек дышит')
+
+#    def walk(self):
+#        print('человек ходит')
+    
+#    def __str__(self):
+#        return f"Person - {self.name}"
+
+#class Doctor(Person):
+
+#    def breath(self):
+#        print("Доктор дышит")
+
+#    def __str__(self):
+#        return f"Doctor - {self.name}"
+
+#d = Doctor('john')
+#p = Person('adam')
+#print(p, d,sep="\n")
+
+
+#Наследование. Расширение класса в Python #####################################
+
+#class Person:
+#    age = 25
+#    def breath(self):
+#        print('Человек дышит')
+
+#    def sleep(self):
+#        print('Человек спит')
+    
+#    def combo(self):
+#        if hasattr(self, 'walk'):
+#            self.walk()
+#        if hasattr(self, 'age'):
+#            print(self.age)
+#        self.breath()
+#        self.sleep()
+
+#class Doctor(Person):
+#    age = 30
+#    def sleep(self):
+#        print('Доктор спит')
+    
+#    def breath(self):
+#        print('Доктор дышит')
+    
+#    def walk(self):
+#        print('Доктор идет')
+
+#p = Person()
+#d = Doctor()
+#p.combo()
+#print('-'*10)
+#d.combo()
+
+
+#Множественное наследование в Python и функция Super() #########################
+
+#class Doctor:
+#    def __init__(self, degree):
+#        self.degree = degree
+
+#    def graduate(self):
+#        print("Ура, я отучился на доктора")
+
+#    def can_build(self):
+#        print("я доктор, я умею строить, но не очень")
+
+
+#class Builder:
+#    def __init__(self, rank):
+#        self.rank = rank
+
+#    def graduate(self):
+#        print("Ура, я отучился на строителя")
+    
+#    def can_cure(self):
+#        print("я строитель, я умею лечить,но не очень ")
+
+
+#class Person(Doctor, Builder):
+#    def __init__(self, degree,rank):
+#        super().__init__(degree)
+#        Builder.__init__(rank)
+
+#    def __str__(self):
+#        return f"Person - {self.rank} {self.degree}"
+
+#print(Person.__mro__)
+
+#s = Person(5, 'spec')
+#print(s)
+
+
+#ООП Python 3: коллекция __slots__ для классов #################################
+
+#import timeit
+
+#class Point:
+    
+#    def __init__(self, x, y):
+#        self.x = x
+#        self.y = y
+    
+
+#class Point2D:
+#    __slots__ = ('x', 'y')
+#    MAX_COORD = 100
+#
+#    def __init__(self, x, y):
+#        self.x = x
+#        self.y = y
+#    
+#    def calc(self):
+#        self.x += 1
+#        del self.y
+#        self.y = 0
+
+#pt = Point2D(10,20)
+#print(pt.x, pt.y)
+
+#t = timeit.timeit(pt.calc)
+#print(t)
+
+
+#Slots свойства и наследование в Python ######################################
+
+#class Rectangle:
+#    __slots__ = ('width', 'height')
+
+#    def __init__(self, a, b):
+#        self.width = a
+#        self.height = b
+
+#    @property
+#    def perimetr(self):
+#        return (self.width+self.height)*2
+    
+#    @property
+#    def area(self):
+#        return self.width * self.height
+
+#class Square(Rectangle):
+#    __slots__ = tuple()
+
+#    def __init__(self, a, b):
+#        super().__init__(a,b)
+
+
+#a = Square(4,4)
+#b = Rectangle(4,5)
+
+#print(a.perimetr, a.area, a.color)
+#print('-'*20)
+#print(b.perimetr, b.area)
